@@ -12,6 +12,7 @@ const useApi = () => {
   const url = process.env.REACT_APP_API_URL as string;
 
   const robots = useAppSelector(({ robots }) => robots);
+  /*   const user= useAppSelector(({user}) => user) */
   const dispatch = useDispatch();
 
   const getRobots = useCallback(async () => {
@@ -26,6 +27,7 @@ const useApi = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        /*         "Authorization": user.token */
       },
       body: JSON.stringify(newRobot),
     });
