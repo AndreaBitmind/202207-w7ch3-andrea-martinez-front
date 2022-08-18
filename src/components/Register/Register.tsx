@@ -1,9 +1,9 @@
 import { SyntheticEvent, useState } from "react";
-import useUser from "../../features/users/hooks/useUser";
+import useUser from "../../hooks/useUser";
 
 const Register = (): JSX.Element => {
   const { register } = useUser();
-  const [formData, setFormData] = useState({
+  const [loginformData, setFormData] = useState({
     userName: "",
     passWord: "",
     image: "",
@@ -13,17 +13,17 @@ const Register = (): JSX.Element => {
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    register(formData);
+    register(loginformData);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+    setFormData({ ...loginformData, [event.target.id]: event.target.value });
   };
 
-  const handleChangeFile = (event: React.ChangeEvent<HTMLFormElement>) => {
-    formData.append("image", event.target.files[0]);
+  const handleChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    formData.append("image", event.target.files![0]);
 
-    setFormData({ ...formData, [event.target.id]: event.target.value });
+    setFormData({ ...loginformData, [event.target.id]: event.target.value });
   };
 
   return (
@@ -37,7 +37,7 @@ const Register = (): JSX.Element => {
             autoComplete="off"
             onChange={handleChange}
             id="userName"
-            value={formData.userName}
+            value={loginformData.userName}
           />
         </div>
         <div>
@@ -47,14 +47,14 @@ const Register = (): JSX.Element => {
             required
             onChange={handleChange}
             id="passWord"
-            value={formData.passWord}
+            value={loginformData.passWord}
           />
           <input
             type="file"
             name="image"
             required
             onChange={handleChangeFile}
-            value={formData.image}
+            value={loginformData.image}
           />
         </div>
         <button type="submit">Register</button>

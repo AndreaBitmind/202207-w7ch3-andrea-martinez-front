@@ -1,4 +1,5 @@
 import NewRobot from "./components/NewRobot/NewRobot";
+import Register from "./components/Register/Register";
 import RobotsList from "./components/RobotsList/RobotsList";
 
 const App = (): JSX.Element => {
@@ -10,6 +11,7 @@ const App = (): JSX.Element => {
       <main className="main-content">
         <NewRobot />
         <RobotsList />
+        <Register />
       </main>
     </div>
   );
