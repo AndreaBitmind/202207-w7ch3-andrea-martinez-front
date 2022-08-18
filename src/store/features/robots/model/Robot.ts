@@ -6,6 +6,10 @@ export interface ProtoRobot {
 
 export interface Robot extends ProtoRobot {
   id: string;
+  owner: {
+    _id: string;
+    owner: string;
+  };
 }
 
 export type Robots = Robot[];
